@@ -1,9 +1,7 @@
 import { MongoClient } from "./deps.ts";
 
 const client = new MongoClient();
-client.connectWithUri(
-  "mongodb+srv://fishbowl:I9uBJzwkOEcJpLPe@cluster0.lqzih.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority",
-);
+client.connectWithUri(Deno.env.get("MONGO_URI")!);
 
 const db = client.database("fishbowl");
 
