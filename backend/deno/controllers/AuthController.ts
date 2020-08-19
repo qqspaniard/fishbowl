@@ -5,8 +5,7 @@ class AuthController {
   login() {
   }
   async register(ctx: RouterContext) {
-    const { value: { name, email, password } } = await ctx.request.body();
-
+    const { name, email, password } = await ctx.request.body().value;
     const user = await User.findOne({ email });
     if (user) {
       ctx.response.status = 422;
